@@ -4,7 +4,7 @@
 
 ## Build network
 ```
-python Build_network.py
+python build_network.py
 ```
 ## Compile mod files
 ```
