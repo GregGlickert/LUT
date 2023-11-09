@@ -1,0 +1,80 @@
+{
+  "target_simulator": "NEURON",
+  "run": {
+    "tstart": 0.0,
+    "tstop": 30500.0,
+    "dt": 0.2,
+    "dL": 20.0,
+    "spike_threshold": -15.0,
+    "nsteps_block": 5000
+  },
+  "conditions": {
+    "celsius": 31.0,
+    "v_init": -80.0
+  },
+  "inputs": {},
+  "output": {
+    "log_file": "/home/gjgpb9/LUT/output/log.txt",
+    "output_dir": "/home/gjgpb9/LUT/output",
+    "spikes_file": "/home/gjgpb9/LUT/output/spikes.h5"
+  },
+  "reports": {},
+  "node_sets_file": "/home/gjgpb9/LUT/node_sets.json",
+  "network": "/home/gjgpb9/LUT/baseline_circuit_config.json",
+  "config_path": "/home/gjgpb9/LUT/baseline_simulation_config.json",
+  "config_dir": "/home/gjgpb9/LUT",
+  "components": {
+    "point_neuron_models_dir": "/home/gjgpb9/LUT/biophys_components/point_neuron_templates",
+    "biophysical_neuron_models_dir": "/home/gjgpb9/LUT/biophys_components/biophysical_neuron_templates",
+    "mechanisms_dir": "/home/gjgpb9/LUT/biophys_components/mechanisms",
+    "morphologies_dir": "/home/gjgpb9/LUT/biophys_components/morphologies",
+    "synaptic_models_dir": "/home/gjgpb9/LUT/biophys_components/synaptic_models",
+    "templates_dir": "/home/gjgpb9/LUT/biophys_components/templates"
+  },
+  "networks": {
+    "nodes": [
+      {
+        "nodes_file": "/home/gjgpb9/LUT/baseline_network/LUT_nodes.h5",
+        "node_types_file": "/home/gjgpb9/LUT/baseline_network/LUT_node_types.csv"
+      },
+      {
+        "nodes_file": "/home/gjgpb9/LUT/baseline_network/Blad_aff_virt_nodes.h5",
+        "node_types_file": "/home/gjgpb9/LUT/baseline_network/Blad_aff_virt_node_types.csv"
+      },
+      {
+        "nodes_file": "/home/gjgpb9/LUT/baseline_network/EUS_aff_virt_nodes.h5",
+        "node_types_file": "/home/gjgpb9/LUT/baseline_network/EUS_aff_virt_node_types.csv"
+      },
+      {
+        "nodes_file": "/home/gjgpb9/LUT/baseline_network/PAG_aff_virt_nodes.h5",
+        "node_types_file": "/home/gjgpb9/LUT/baseline_network/PAG_aff_virt_node_types.csv"
+      }
+    ],
+    "edges": [
+      {
+        "edges_file": "/home/gjgpb9/LUT/baseline_network/LUT_LUT_edges.h5",
+        "edge_types_file": "/home/gjgpb9/LUT/baseline_network/LUT_LUT_edge_types.csv"
+      },
+      {
+        "edges_file": "/home/gjgpb9/LUT/baseline_network/Blad_aff_virt_LUT_edges.h5",
+        "edge_types_file": "/home/gjgpb9/LUT/baseline_network/Blad_aff_virt_LUT_edge_types.csv"
+      },
+      {
+        "edges_file": "/home/gjgpb9/LUT/baseline_network/EUS_aff_virt_LUT_edges.h5",
+        "edge_types_file": "/home/gjgpb9/LUT/baseline_network/EUS_aff_virt_LUT_edge_types.csv"
+      },
+      {
+        "edges_file": "/home/gjgpb9/LUT/baseline_network/PAG_aff_virt_LUT_edges.h5",
+        "edge_types_file": "/home/gjgpb9/LUT/baseline_network/PAG_aff_virt_LUT_edge_types.csv"
+      }
+    ]
+  },
+  "node_sets": {
+    "biophysical_nodes": {
+      "model_type": "biophysical"
+    },
+    "point_nodes": {
+      "model_type": "point_process"
+    }
+  }
+}

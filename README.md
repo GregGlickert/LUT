@@ -20,6 +20,8 @@ python run_network.py
 ```
 python plot_results.py
 ```
+## If you don't have remote display or just want plots faster using the notebook results.ipynb shows the plot_results.py script faster.
+
 ## The file structure of the whole model will be 
 | python file |use      |
 |----------- | ----------- |
@@ -29,7 +31,5 @@ python plot_results.py
 | model_parameters.py  |adjust network parameters                |
 | feedback_loop.py     |BMTK module for feedback                  |
 | bladder_equations.py |biophysical bladder eqautions stored here                 |
-| build_inputs.py      |build inputs for network                 |
-| synapses.py          |Loads custom neuron synapses                 |
 | biophys_components   |Stores cell templates and modfiles                 |
 | network              |Stores network files                 |
