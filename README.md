@@ -2,9 +2,12 @@
 
 ## This will be the overall stucture of the LUT model and how it will operate. There will be a python script called Model_Parameters.py. In this script you will specify which model(Baseline,SCI) and other network parameters that we will vary as time goes on. Then the flow of the model will be the following
 
+## TO DO STILL
+### feedback.py is currently using block format still. Other result plots need to be added.
+
 ## Build network
 ```
-python build_network.py
+python Build_network.py
 ```
 ## Compile mod files
 ```

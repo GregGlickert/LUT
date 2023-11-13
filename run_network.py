@@ -1,14 +1,10 @@
-import os, sys, logging, faulthandler
+import sys
 from bmtk.simulator import bionet
 from bmtk.simulator.bionet.default_setters.cell_models import loadHOC
-from bmtk.simulator.bionet.modules.sim_module import SimulatorMod
-from bmtk.utils.reports.spike_trains import SpikeTrains
-from bmtk.utils.reports.spike_trains import PoissonSpikeGenerator
 from bmtk.simulator.bionet.io_tools import io
-import numpy as np
 from neuron import h
-import pandas as pd
 from feedback_loop import FeedbackLoop
+import json
 import model_parameters 
 # Import the synaptic depression/facilitation model
 #import synapses
@@ -22,8 +18,12 @@ change_thres = 10 # cm H20 #10
 bionet.pyfunction_cache.add_cell_model(loadHOC, directive='hoc', model_type='biophysical')
 
 def run(config_file):
+    with open(config_file, 'r') as json_file:
+        conf_dict = json.load(json_file)
+        conf_dict['run']['tstop'] = model.t_sim
+        conf_dict['run']['dt'] = model.dt
+        conf = bionet.Config.from_dict(conf_dict, validate=True)
 
-    conf = bionet.Config.from_json(config_file, validate=True)
     conf.build_env()
 
     fbmod = FeedbackLoop()

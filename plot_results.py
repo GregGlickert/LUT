@@ -8,7 +8,6 @@ def plot_figure(bladder_volume,bladder_pressure,feedback_times):
     feedback_times = [tx/1000 for tx in feedback_times]
     bladder_volume = [bx*1000 for bx in bladder_volume]
 
-
     color = 'tab:red'
     ax1_1.set_xlabel('Time (t) [s]')
     ax1_1.set_ylabel('Bladder Volume (V) [ul]', color=color)
@@ -24,7 +23,8 @@ def plot_figure(bladder_volume,bladder_pressure,feedback_times):
     ax2_1.tick_params(axis='y', labelcolor=color)
 
     fig1.tight_layout()  # otherwise the right y-label is slightly clipped
-    plt.show()
+    #plt.show()
+    plt.savefig("results.png")
 
 bladder_volume = pd.read_csv('output/bladder_volume.csv')
 bladder_pressure = pd.read_csv('output/bladder_pressure.csv')

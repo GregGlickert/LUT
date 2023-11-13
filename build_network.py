@@ -27,20 +27,28 @@ print("\nCreating Cells")
 net = NetworkBuilder('LUT')
 
 # Specify number of cells in each population #
+def get_cell_number(target_pop):
+        node_set = model.node_set
+        for node in node_set:
+            if node["name"] == target_pop:
+                start = node["start"]
+                end = node["end"]
+                num = np.arange(start=start,stop=end+1,step=1)
+                return(len(num))
 
-numBladaff  = 10
-numPAGaff   = 10
-numEUSaff   = 10
-numIND      = 10
-numHypo     = 10
-numINmplus  = 10
-numINmminus = 10
-numPGN      = 10
-numFB       = 10
-numIMG      = 10
-numMPG      = 10
-numEUSmn    = 10
-numBladmn   = 10
+numBladaff  = get_cell_number('Bladaff')
+numPAGaff   = get_cell_number('PAGaff')
+numEUSaff   = get_cell_number('EUSaff')
+numIND      = get_cell_number('IND')
+numHypo     = get_cell_number('Hypo')
+numINmplus  = get_cell_number('INmplus')
+numINmminus = get_cell_number('INmminus')
+numPGN      = get_cell_number('PGN')
+numFB       = get_cell_number('FB')
+numIMG      = get_cell_number('IMG')
+numMPG      = get_cell_number('MPG')
+numEUSmn    = get_cell_number('EUSmn')
+numBladmn   = get_cell_number('Bladmn')
 # Create the nodes ----------------------------------------
 net.add_nodes(N=numBladaff, level='high',pop_name='Bladaff',model_type='biophysical',model_template='hoc:PUD',morphology='blank.swc')
 net.add_nodes(N=numPAGaff, pop_name='PAGaff',model_type='biophysical',model_template='hoc:PUD',morphology='blank.swc')

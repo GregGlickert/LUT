@@ -191,11 +191,7 @@ class FeedbackLoop(SimulatorMod):
         # Calculate the start and stop times for the next block
         next_block_tstart = block_interval[1]*sim.dt
         next_block_tstop = next_block_tstart+self._block_length_ms
-
-        # For this simple example we just create a randomized series of spike for the next time block for each of the
-        #  14 cells. The stimuli input rate (self._current_input_rate) is increamented by 10 Hz each block, for more
-        #  realistic simulations you can use the firing-rates calcualted above to adjust the incoming stimuli.
-        #print("Calculated Bladder Afferent Firing Rate: {0}".format(self.blad_fr))
+        
         psg = PoissonSpikeGenerator()
         psg.add(
             node_ids= [0,1,2,3,4,5,6,7,8,9],
@@ -205,27 +201,19 @@ class FeedbackLoop(SimulatorMod):
         )
         
         psg.add_spikes([0,1,2,3,4,5,6,7,8,9], [next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop], population = "Bladaff")
-        #psg.to_csv("spikes.csv")
 
         for gid, cell in sim.net.get_local_cells().items():
             if gid < 10:
                 spikes = psg.get_times(gid, population='Bladaff')
                 spikes = np.sort(spikes)
-                #print("HEllo: \n {0}".format(spikes))
                 if len(spikes) == 0:
                     continue
-
-            # The next block of code is where we update the incoming/virtual spike trains for each cell, by adding
-            # each spike to the cell's netcon (eg synapse). The only caveats is the spike-trains array must
-            #  1. Have atleast one spike
-            #  2. Be sorted
-            #  3. first spike must occur after the delay.
-            # Otherwise an error will be thrown.
                 self._spike_events[gid] = np.concatenate((self._spike_events[gid], spikes))
                 nc = self._netcons[gid]
                 for t in spikes:
                     nc.event(t)
-                    
+        
+      
         if self.blad_fr > 10 and vol > 0.02:
             io.log_info("!!!PAG FIRING ACTIVATED!!!")
             self.pag_fr = 15
@@ -248,7 +236,6 @@ class FeedbackLoop(SimulatorMod):
             )
         
             psg.add_spikes([0,1,2,3,4,5,6,7,8,9], [next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop, next_block_tstop,       next_block_tstop, next_block_tstop, next_block_tstop], population = "PAGaff")
-            psg.to_csv("spikes_pag.csv")
             #self._current_input_rate += 10.0
 
             for gid, cell in sim.net.get_local_cells().items():

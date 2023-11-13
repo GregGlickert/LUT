@@ -21,7 +21,7 @@
   "reports": {},
   "node_sets_file": "/home/gjgpb9/LUT/node_sets.json",
   "network": "/home/gjgpb9/LUT/baseline_circuit_config.json",
-  "config_path": "/home/gjgpb9/LUT/baseline_simulation_config.json",
+  "config_path": "/home/gjgpb9/LUT/sonata_config.json",
   "config_dir": "/home/gjgpb9/LUT",
   "components": {
     "point_neuron_models_dir": "/home/gjgpb9/LUT/biophys_components/point_neuron_templates",
